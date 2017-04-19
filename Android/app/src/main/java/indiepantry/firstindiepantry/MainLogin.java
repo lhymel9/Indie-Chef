@@ -38,11 +38,13 @@ public class MainLogin extends AppCompatActivity {
         setContentView(R.layout.activity_main_login);
         TextView textView = (TextView) findViewById(R.id.textView3);
         textView.setVisibility(View.INVISIBLE);
+        /* Ignore this bit, it is for testing queries only
         try{
             DjangoQueryClass.get_user();
         }catch(IOException e){
             e.getMessage();
         }
+        */
 
     }
 
