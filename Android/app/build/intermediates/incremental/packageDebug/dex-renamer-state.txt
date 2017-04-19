@@ -1,0 +1,7 @@
+#Sat Apr 15 15:36:32 CDT 2017
+base.0=C\:\\Users\\Maxwell\\AndroidStudioProjects\\FirstIndiePantry\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_ae6a087920b2d2afea31e2b0134fa29e410afca6
+renamed.1=classes2.dex
+renamed.0=classes.dex
+file.1=C\:\\Users\\Maxwell\\AndroidStudioProjects\\FirstIndiePantry\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_33a29bcbb468cc43d6f6de4319302a4cb5fd72c3\\classes.dex
+base.1=C\:\\Users\\Maxwell\\AndroidStudioProjects\\FirstIndiePantry\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_33a29bcbb468cc43d6f6de4319302a4cb5fd72c3
+file.0=C\:\\Users\\Maxwell\\AndroidStudioProjects\\FirstIndiePantry\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_ae6a087920b2d2afea31e2b0134fa29e410afca6\\classes.dex
