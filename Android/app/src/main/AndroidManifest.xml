@@ -19,7 +19,8 @@
         <activity android:name=".HomeScreen" />
         <activity android:name=".Item_Activity" />
         <activity android:name=".CartActivity" />
-        <activity android:name=".VendorPageActivity"></activity>
+        <activity android:name=".VendorPageActivity" />
+        <activity android:name=".FindVendorNearYou"></activity>
     </application>
 
 </manifest>
