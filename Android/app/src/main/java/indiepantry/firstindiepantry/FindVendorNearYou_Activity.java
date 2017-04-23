@@ -1,18 +1,20 @@
 package indiepantry.firstindiepantry;
 
+import android.content.DialogInterface;
 import android.location.Location;
 import android.location.LocationManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.ViewGroup;
+import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 public class FindVendorNearYou_Activity extends AppCompatActivity {
     Vendor[] vendors = new Vendor[]{new Vendor("Bob Smith", "11035 N. Shoreline Ave.", "Balls@gmail.com"),
             new Vendor("Kate Winslett", "3000 July St.", "ihatekate@yahoo.com"),
-            new Vendor("George Clooney", "1600 Pennsylvania Ave.", "imgeorgecloone@aol.com")};
-
-    ViewGroup linearLayout = (ViewGroup) findViewById(R.id.vendorList);
+            new Vendor("George Clooney", "1600 Pennsylvania Ave.", "imgeorgeclooney@aol.com")};
+    LinearLayout linearLayout = (LinearLayout) findViewById(R.id.vendorList);
+    Location myLocation = new Location(LocationManager.GPS_PROVIDER);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,13 +32,19 @@ public class FindVendorNearYou_Activity extends AppCompatActivity {
 
         for (Vendor vendor : vendors) {
             Button newButton = new Button(this);
-            newButton.setText(vendor.getName() + " Rating: " + vendor.getRating());
+            newButton.setOnClickListener(new View.OnClickListener(){
+                public void onClick(View v){
+                    //startActivity(new Intent(FindVendorNearYou_Activity.this, <INSERT VENDOR MENU ACTIVITY HERE>));
+                }
+            });
+            newButton.setText(vendor.getName()
+                    + " Rating: " + vendor.getRating()
+                    + "Distance: " + myLocation.distanceTo(vendor.getLocation()));
             linearLayout.addView(newButton);
         }
     }
 
     public Vendor[] sortVendors(Vendor[] vendors){
-        Location myLocation = new Location(LocationManager.GPS_PROVIDER);
         Vendor temp;
         float distance;
         for(int i = 0; i < vendors.length - 1; i++){
