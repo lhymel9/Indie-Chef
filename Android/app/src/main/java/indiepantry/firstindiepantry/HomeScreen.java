@@ -48,6 +48,14 @@ public class HomeScreen extends AppCompatActivity implements  View.OnClickListen
         textView.setText("Hello " + SideData.getUsername() + "!");
 
         SideData.initCart();
+        Button vendorListButton = (Button) findViewById(R.id.VendorListButton);
+        vendorListButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeScreen.this, VendorListActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
 
