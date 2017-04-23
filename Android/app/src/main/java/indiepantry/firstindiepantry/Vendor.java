@@ -16,6 +16,10 @@
 
 package indiepantry.firstindiepantry;
 
+import android.content.Context;
+import android.location.Geocoder;
+import android.location.Location;
+
 public class Vendor {
 	private String address;
 	private String name;
@@ -24,6 +28,7 @@ public class Vendor {
 	private String phone;
 	private String password;
 	private Boolean approved;
+	private Location location;
 	
 	/*
 	 * Creates a Vendor object.
@@ -40,6 +45,7 @@ public class Vendor {
 		String phone;
 		String password;
 		Boolean approved;
+		Location location;
 	}
 	
 	/*
@@ -71,7 +77,8 @@ public class Vendor {
 	public void setApproved(Boolean approved) {
 		this.approved = approved;
 	}
-	
+
+	public void setLocation(Location location){ this.location = location;}
 	/*
 	 * Obtains the address of a particular Vendor object.
 	 * 
@@ -80,7 +87,8 @@ public class Vendor {
 	public String getAddress() {
 		return address;
 	}
-	
+
+	public Location getLocation(){ return location;}
 	/*
 	 * Obtains the name of a particular Vendor object.
 	 * 

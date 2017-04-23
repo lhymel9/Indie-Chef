@@ -10,7 +10,7 @@ import android.widget.Button;
 public class FindVendorNearYou_Activity extends AppCompatActivity {
     Vendor[] vendors = new Vendor[]{new Vendor("Bob Smith", "11035 N. Shoreline Ave.", "Balls@gmail.com"),
             new Vendor("Kate Winslett", "3000 July St.", "ihatekate@yahoo.com"),
-            new Vendor("George Clooney", "1600 Pennsylvania Ave.", "imgeorgecloone@aol.com"};
+            new Vendor("George Clooney", "1600 Pennsylvania Ave.", "imgeorgecloone@aol.com")};
 
     ViewGroup linearLayout = (ViewGroup) findViewById(R.id.vendorList);
 
@@ -19,13 +19,18 @@ public class FindVendorNearYou_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_vendor_near_you);
 
-        
+        vendors[0].getLocation().setLatitude(23.4);
+        vendors[0].getLocation().setLongitude(33);
+        vendors[1].getLocation().setLatitude(30.1);
+        vendors[1].getLocation().setLongitude(12.3);
+        vendors[2].getLocation().setLatitude(42.3);
+        vendors[2].getLocation().setLongitude(53.2);
 
         vendors = sortVendors(vendors);
 
-        for(int i = 0; i < vendors.length; i++){
+        for (Vendor vendor : vendors) {
             Button newButton = new Button(this);
-            newButton.setText(vendors[i].getName() + " Rating: " + vendors[i].getRating());
+            newButton.setText(vendor.getName() + " Rating: " + vendor.getRating());
             linearLayout.addView(newButton);
         }
     }
