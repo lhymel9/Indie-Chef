@@ -29,7 +29,7 @@
         <activity android:name=".Item_Activity" />
         <activity android:name=".CartActivity" />
         <activity android:name=".VendorPageActivity" />
-<<<<<<< HEAD
+<!--<<<<<<< HEAD-->
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -46,9 +46,9 @@
             android:name=".ChefLocationActivity"
             android:label="@string/title_activity_chef_location" />
         <activity android:name=".VendorListActivity"></activity>
-=======
-        <activity android:name=".FindVendorNearYou"></activity>
->>>>>>> origin/master
+
+        <activity android:name=".FindVendorNearYou_Activity"></activity>
+<!-->>>>>>> origin/master-->
     </application>
 
 </manifest>
