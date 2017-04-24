@@ -18,6 +18,9 @@
 
 package indiepantry.firstindiepantry;
 
+import android.widget.Button;
+import android.widget.TextView;
+
 import java.util.ArrayList;
 
 
@@ -28,16 +31,21 @@ public class SideData {
 
     private static ArrayList<item_display> cart;
 
+    private static ArrayList<Vendor> vendors;
+
     private static Vendor temp_vendor;
 
     private static String username;
 
+    public static String returnVal;  //For use in DjangoQueryClass?
 
+    public static Button textView;
 
-
+    public static void setReturnVal(String r){ returnVal = r;}
 
     public static void setUsername(String u){ username = u;}
 
+    public static void setVendors(ArrayList<Vendor> vens){ vendors = vens;}
 
     public static void setTemp_vendor(Vendor vendor){ temp_vendor = vendor;}
 
@@ -50,6 +58,8 @@ public class SideData {
     public static void addToCart(item_display item){
         cart.add(item);
     }
+
+    public static void addToVendors(Vendor ven){ vendors.add(ven);}
 
     public static item_display getTemp_item(){
         return temp_item;
@@ -69,6 +79,8 @@ public class SideData {
 
     public static String getUsername(){ return username;}
 
+    public static ArrayList<Vendor> getVendors(){ return vendors;}
 
+    public static String getReturnVal(){ return returnVal;}
 
 }
