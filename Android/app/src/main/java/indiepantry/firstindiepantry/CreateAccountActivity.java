@@ -58,6 +58,19 @@ public class CreateAccountActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
                 else{
+                    EditText editName = (EditText) findViewById(R.id.createAccountNameEditText);
+                    EditText editPassword = (EditText) findViewById(R.id.createAccountPasswordEditText);
+                    EditText editEmail = (EditText) findViewById(R.id.createAccountEmailEditText);
+                    EditText editAddress = (EditText) findViewById(R.id.createAccountAddressEditText);
+                    EditText editUsername = (EditText) findViewById(R.id.createAccountUsernameEditText);
+                    String name = editName.getText().toString();
+                    String password = editPassword.getText().toString();
+                    String email = editEmail.getText().toString();
+                    String address = editAddress.getText().toString();
+                    String username = editUsername.getText().toString();
+                    //String u, String p, String n, String a, String e
+                    Customer newCustomer = new Customer(username, password, name, address, email);
+                    SideData.setCustomer(newCustomer);
                     Intent intent = new Intent(CreateAccountActivity.this, CreateNewCustomerActivity.class);
                     startActivity(intent);
                 }

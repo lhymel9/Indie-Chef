@@ -41,6 +41,12 @@ public class SideData {
 
     public static Button textView;
 
+    public static Customer customer;
+
+
+
+    public static void setCustomer(Customer c){ customer =c;}
+
     public static void setReturnVal(String r){ returnVal = r;}
 
     public static void setUsername(String u){ username = u;}
@@ -82,5 +88,7 @@ public class SideData {
     public static ArrayList<Vendor> getVendors(){ return vendors;}
 
     public static String getReturnVal(){ return returnVal;}
+
+    public static Customer getCustomer(){ return customer; }
 
 }

@@ -45,6 +45,9 @@ public class VendorListActivity extends AppCompatActivity {
         private ArrayList<Vendor> queryVendors = new ArrayList<>();
         public StringBuilder stringBuilder = new StringBuilder();
 
+        private ArrayList<Customer> queryCustomers = new ArrayList<>();
+
+
         @Override
         protected String doInBackground(String... params) {
             InputStream in = null;
@@ -69,6 +72,8 @@ public class VendorListActivity extends AppCompatActivity {
                     org.json.JSONArray myJson = new org.json.JSONArray(s);
                     for(int i=0; i < myJson.length(); i++) {
                         JSONObject jObj = (JSONObject) myJson.get(i);
+                        //Customer customer = new Customer(jObj.getString("username"),jObj.getString("passwordC"),jObj.getString("nameC"),jObj.getString("customerAddress"),jObj.getString("emailC"));
+                        //queryCustomers.add(customer);
                         Vendor vendor = new Vendor(jObj.getString("nameV"), jObj.getString("vendorAddress"), jObj.getString("emailV"));
                         queryVendors.add(vendor);
                     }
@@ -82,6 +87,8 @@ public class VendorListActivity extends AppCompatActivity {
                     JSONObject jObj = new JSONObject(s);
                     Vendor vendor = new Vendor(jObj.getString("nameV"), jObj.getString("vendorAddress"), jObj.getString("emailV"));
                     queryVendors.add(vendor);
+                    //Customer customer = new Customer(jObj.getString("username"),jObj.getString("passwordC"),jObj.getString("nameC"),jObj.getString("customerAddress"),jObj.getString("emailC"));
+                    //queryCustomers.add(customer);
                 }catch(JSONException e){
 
                     return;
@@ -90,6 +97,7 @@ public class VendorListActivity extends AppCompatActivity {
 
             LinearLayout linearLayout = (LinearLayout) findViewById(R.id.VendorListLinearLayout);
             for(Vendor bob: queryVendors){
+            //for(Customer bob: queryCustomers){
                 Button vendor_button = new Button(VendorListActivity.this);
                 vendor_button.setTag(bob);
                 vendor_button.setText(bob.getName());
