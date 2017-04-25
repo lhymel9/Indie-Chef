@@ -52,7 +52,7 @@ public class Item_Activity extends AppCompatActivity implements View.OnClickList
         added_to_cart.setVisibility(TextView.INVISIBLE);
 
         display_name.setText(item.getName());
-        display_rating.setText(Double.toString(item.getRating()) + "/5");
+        display_rating.setText("1" + "/5");
         display_description.setText(item.getDescription());
         purchase_button.setText("Purchase for $" + Double.toString(item.getCost()));
         purchase_button.setTag(item);

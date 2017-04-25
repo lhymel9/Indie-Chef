@@ -42,7 +42,6 @@ public class VendorPageActivity extends AppCompatActivity {
 
         Vendor vendor = SideData.getTemp_vendor();
         nameBox.setText(vendor.getName());
-        ratingButton.setText(Double.toString(vendor.getRating()));
 
 
 

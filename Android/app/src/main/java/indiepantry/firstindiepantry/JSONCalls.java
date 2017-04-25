@@ -22,6 +22,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 class JSONCalls {
@@ -52,18 +53,22 @@ class JSONCalls {
 		while ((output = br.readLine()) != null)
 			stringBuilder.append(output);
 		conn.disconnect();
-		
-		JSONArray myJson = new JSONArray(stringBuilder.toString());
-		
-		for(int i=0; i < myJson.length(); i++) {
-			JSONObject jObj = (JSONObject) myJson.get(i);
-			Vendor vendor = new Vendor(jObj.getString("nameV"), jObj.getString("vendorAddress"), jObj.getString("emailV"));
-			vendor.setRating(jObj.getString("rating"));
-			vendor.setPhone(jObj.getString("phone"));
-			vendor.setPassword(jObj.getString("passwordV"));
-			vendor.setApproved(jObj.getBoolean("approved"));
-			vendorList.add(vendor);
+		try{
+			JSONArray myJson = new JSONArray(stringBuilder.toString());
+
+			for(int i=0; i < myJson.length(); i++) {
+				JSONObject jObj = (JSONObject) myJson.get(i);
+				Vendor vendor = new Vendor(jObj.getString("nameV"), jObj.getString("vendorAddress"), jObj.getString("emailV"));
+				vendor.setRating(jObj.getString("rating"));
+				vendor.setPhone(jObj.getString("phone"));
+				vendor.setPassword(jObj.getString("passwordV"));
+				vendor.setApproved(jObj.getBoolean("approved"));
+				vendorList.add(vendor);
+			}
+		}catch (JSONException e){
+			return vendorList;
 		}
+
 
 		return vendorList;
 	}

@@ -31,11 +31,9 @@ public class VendorListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vendor_list);
-        TextView textView = (TextView) findViewById(R.id.textView5);
-        textView.setText("Before query!");
         try{
             QueryClass queryClass = new QueryClass();
-            queryClass.execute("http://env2.zs6znymmyc.us-east-1.elasticbeanstalk.com/api/vendors/1/?format=json");
+            queryClass.execute("http://env2.zs6znymmyc.us-east-1.elasticbeanstalk.com/api/vendors/?format=json");
         }finally{
 
         }
@@ -44,7 +42,7 @@ public class VendorListActivity extends AppCompatActivity {
 
     public class QueryClass extends AsyncTask<String, Void, String> {
 
-        private ArrayList<Vendor> queryVendors;
+        private ArrayList<Vendor> queryVendors = new ArrayList<>();
         public StringBuilder stringBuilder = new StringBuilder();
 
         @Override
@@ -66,33 +64,36 @@ public class VendorListActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            TextView textView = (TextView) findViewById(R.id.textView5);
-            textView.setText("PostExecute!");
-            String new_string = "{\"vendorAddress\":\"555 Place Drive\",\"emailV\":\"jDoe@yahoo.com\",\"passwordV\":\"jDoePassword1\",\"phone\":\"555-555-5555\",\"rating\":\"3.5\",\"nameV\":\"John Doe\",\"approved\":true}";
-            try{
-                JSONArray myJson = new JSONArray(s);
-                /*JSONObject nObj = new JSONObject(s);
-                Vendor vendor = new Vendor(nObj.getString("nameV"), 0, Double.parseDouble(nObj.getString("rating")));
-                queryVendors.add(vendor);
-                */
-                for(int i=0; i < myJson.length(); i++) {
-                    JSONObject jObj = (JSONObject) myJson.get(i);
-                    Vendor vendor = new Vendor(jObj.getString("nameV"), 0, Double.parseDouble(jObj.getString("rating")));
-                    queryVendors.add(vendor);
+            if(s.substring(0,4).contains("[")){
+                try{
+                    org.json.JSONArray myJson = new org.json.JSONArray(s);
+                    for(int i=0; i < myJson.length(); i++) {
+                        JSONObject jObj = (JSONObject) myJson.get(i);
+                        Vendor vendor = new Vendor(jObj.getString("nameV"), jObj.getString("vendorAddress"), jObj.getString("emailV"));
+                        queryVendors.add(vendor);
+                    }
+                }catch(JSONException e){
+
+                    return;
                 }
-            }catch(JSONException e){
-                textView.setText("Error" + s+ e.getMessage());
-                return;
+            }
+            else{
+                try{
+                    JSONObject jObj = new JSONObject(s);
+                    Vendor vendor = new Vendor(jObj.getString("nameV"), jObj.getString("vendorAddress"), jObj.getString("emailV"));
+                    queryVendors.add(vendor);
+                }catch(JSONException e){
+
+                    return;
+                }
             }
 
-            textView.setText(s);
-            LinearLayout linearLayout = (LinearLayout) findViewById(R.id.VendorListActivityLinearLayout);
+            LinearLayout linearLayout = (LinearLayout) findViewById(R.id.VendorListLinearLayout);
             for(Vendor bob: queryVendors){
-                LinearLayout horizontalLayout = new LinearLayout(VendorListActivity.this);
-                horizontalLayout.setOrientation(LinearLayout.HORIZONTAL);
                 Button vendor_button = new Button(VendorListActivity.this);
                 vendor_button.setTag(bob);
                 vendor_button.setText(bob.getName());
+                vendor_button.setVisibility(Button.VISIBLE);
                 vendor_button.setOnClickListener(new View.OnClickListener(){
                     @Override
                     public void onClick(View v) {
@@ -103,8 +104,7 @@ public class VendorListActivity extends AppCompatActivity {
                         startActivity(intent);
                     }
                 });
-                horizontalLayout.addView(vendor_button);
-                linearLayout.addView(horizontalLayout);
+                linearLayout.addView(vendor_button);
             }
         }
 

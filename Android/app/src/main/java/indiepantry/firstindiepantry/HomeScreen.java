@@ -85,9 +85,9 @@ public class HomeScreen extends AppCompatActivity implements  View.OnClickListen
             }
         });
 
-        Vendor vendor1 = new Vendor("Bob Smith", 11111, 4.5);
-        Vendor vendor2 = new Vendor("Kate Winslett", 123456, 3.4);
-        Vendor vendor3 = new Vendor("George Clooney", 101010,5.0);
+        Vendor vendor1 = new Vendor("Bob Smith", "House Place", "bob@smith.com");
+        Vendor vendor2 = new Vendor("Kate Winslett", "Non-Home place", "kate@winslett.com");
+        Vendor vendor3 = new Vendor("George Clooney", "Place","george@clooney.com");
 
         Item_Category cat1 = new Item_Category("Jellies", vendor1);
         Item_Category cat2 = new Item_Category("Cookies", vendor2);

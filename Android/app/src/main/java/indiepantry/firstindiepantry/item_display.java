@@ -36,8 +36,5 @@ public class item_display {
 
     public Vendor getVendor(){ return vendor;}
 
-    public int getVendor_id(){ return vendor.getId();}
-
-    public double getRating(){ return vendor.getRating();}
 
 }
