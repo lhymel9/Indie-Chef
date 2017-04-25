@@ -45,10 +45,11 @@
         <activity
             android:name=".ChefLocationActivity"
             android:label="@string/title_activity_chef_location" />
-        <activity android:name=".VendorListActivity"/>
-
-        <activity android:name=".FindVendorNearYou_Activity"/>
-
+        <activity android:name=".VendorListActivity" />
+        <activity android:name=".FindVendorNearYou_Activity" />
+        <activity android:name=".CreateAccountActivity" />
+        <activity android:name=".CreateNewVendorActivity" />
+        <activity android:name=".CreateNewCustomerActivity"></activity>
     </application>
 
 </manifest>

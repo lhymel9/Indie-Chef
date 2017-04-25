@@ -21,7 +21,6 @@ package indiepantry.firstindiepantry;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
@@ -57,13 +56,13 @@ public class MainLogin extends AppCompatActivity {
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_login);
-        final TextView textView = (TextView) findViewById(R.id.textView3);
+        final TextView textView = (TextView) findViewById(R.id.mainLoginInvalidUsernameAndOrPasswordText);
         textView.setVisibility(View.INVISIBLE);
         // Ignore this bit, it is for testing queries only
 
-        Button button = (Button) findViewById(R.id.button);
+        Button loginButton = (Button) findViewById(R.id.mainLoginButton);
 
-        button.setOnClickListener(new View.OnClickListener() {
+        loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View textView) {
                 login_attempt(textView);
@@ -71,11 +70,15 @@ public class MainLogin extends AppCompatActivity {
 
         });
 
-
-        String output = "";
-
-        textView.setText(output);
-
+        Button signUpButton = (Button) findViewById(R.id.signUpButton);
+        signUpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                textView.setVisibility(TextView.INVISIBLE);
+                Intent intent = new Intent(MainLogin.this, CreateAccountActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
     }
@@ -83,36 +86,25 @@ public class MainLogin extends AppCompatActivity {
 
 
     public void login_attempt(View view){
-        /*
-         * Implement validation
-         */
-        int k = 0;
-        TextView textView = (TextView) findViewById(R.id.textView3);
-        if(textView.getVisibility() == View.VISIBLE){
-            k = 1;
-        }
+
 
         if(validate()){
             Intent intent = new Intent(this, HomeScreen.class);
-            EditText editUser = (EditText) findViewById(R.id.editText);
+            EditText editUser = (EditText) findViewById(R.id.mainLoginUsernameEditText);
             String username = editUser.getText().toString();
             SideData.setUsername(username);
             startActivity(intent);
         }
         else{
-            if(k==1){
-                //textView.setVisibility(View.INVISIBLE);
-            }
-            else{
-                textView.setVisibility(View.VISIBLE);
-            }
+            TextView textView = (TextView) findViewById(R.id.mainLoginInvalidUsernameAndOrPasswordText);
+            textView.setVisibility(View.VISIBLE);
         }
 
     }
 
     protected boolean validate(){
-        EditText editUser = (EditText) findViewById(R.id.editText);
-        EditText editPass = (EditText) findViewById(R.id.editText2);
+        EditText editUser = (EditText) findViewById(R.id.mainLoginUsernameEditText);
+        EditText editPass = (EditText) findViewById(R.id.mainLoginPasswordEditText);
         String username = editUser.getText().toString();
         String password = editPass.getText().toString();
         if(username.equals("folshost") && password.equals("1234")){
@@ -124,82 +116,7 @@ public class MainLogin extends AppCompatActivity {
 
     }
 
-    private void downloadImage(String urlStr,final TextView v) {
-        //progressDialog = ProgressDialog.show(this, "", "Downloading Image from " + urlStr);
-        final String url = urlStr;
 
-        new Thread() {
-            public void run() {
-                InputStream in = null;
-
-                Message msg = Message.obtain();
-                msg.what = 1;
-
-                try {
-                    //
-                    in = openHttpConnection("http://www.google.com");
-
-                    /*
-                    bitmap = BitmapFactory.decodeStream(in);
-                    Bundle b = new Bundle();
-                    b.putParcelable("bitmap", bitmap);
-                    msg.setData(b);
-                    */
-                    BufferedReader br = new BufferedReader(new InputStreamReader(in));
-                    v.setText("After buffer!");
-                    String output;
-                    /*
-                    while ((output = br.readLine()) != null)
-                        stringBuilder.append(output);
-                    //v.setText(stringBuilder.toString());
-                    */
-                    in.close();
-                }catch (IOException e1) {
-                    e1.printStackTrace();
-                }
-                messageHandler.sendMessage(msg);
-            }
-        }.start();
-    }
-
-    private InputStream openHttpConnection(String urlStr) {
-        InputStream in = null;
-        int resCode = -1;
-
-        try {
-            URL url = new URL(urlStr);
-            URLConnection urlConn = url.openConnection();
-
-            if (!(urlConn instanceof HttpURLConnection)) {
-                throw new IOException("URL is not an Http URL");
-            }
-
-            HttpURLConnection httpConn = (HttpURLConnection) urlConn;
-            httpConn.setAllowUserInteraction(false);
-            httpConn.setInstanceFollowRedirects(true);
-            httpConn.setRequestMethod("GET");
-            httpConn.connect();
-            resCode = httpConn.getResponseCode();
-
-            if (resCode == HttpURLConnection.HTTP_OK) {
-                in = httpConn.getInputStream();
-            }
-        }catch (MalformedURLException e) {
-            e.printStackTrace();
-        }catch (IOException e) {
-            e.printStackTrace();
-        }
-        return in;
-    }
-
-    private Handler messageHandler = new Handler() {
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            ImageView img = (ImageView) findViewById(R.id.imageView3);
-            img.setImageBitmap((Bitmap) (msg.getData().getParcelable("bitmap")));
-            progressDialog.dismiss();
-        }
-    };
 
 
 }

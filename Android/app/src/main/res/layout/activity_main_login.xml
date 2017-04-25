@@ -7,7 +7,7 @@
     tools:context="indiepantry.firstindiepantry.MainLogin">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/mainLoginWelcomeSplashText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/mainLoginUsernameEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
@@ -34,7 +34,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/mainLoginPasswordEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="0dp"
@@ -43,43 +43,42 @@
         android:hint="@string/password_text"
         android:inputType="textPassword"
         android:textSize="14sp"
-        app:layout_constraintLeft_toLeftOf="@+id/editText"
-        app:layout_constraintRight_toRightOf="@+id/editText"
+        app:layout_constraintLeft_toLeftOf="@+id/mainLoginUsernameEditText"
+        app:layout_constraintRight_toRightOf="@+id/mainLoginUsernameEditText"
         android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/editText"
+        app:layout_constraintTop_toBottomOf="@+id/mainLoginUsernameEditText"
         app:layout_constraintHorizontal_bias="0.0" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/mainLoginButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:layout_marginTop="0dp"
+        android:layout_marginTop="-1dp"
         android:onClick="login_attempt"
         android:text="Login"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2"
-        app:layout_constraintVertical_bias="0.753"
-        tools:text="@string/login_button" />
+        app:layout_constraintTop_toBottomOf="@+id/mainLoginPasswordEditText"
+        tools:text="@string/login_button"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/signUpButton"
+        app:layout_constraintVertical_bias="0.905" />
 
     <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="204dp"
-        android:layout_height="202dp"
+        android:id="@+id/mainLoginSplash"
+        android:layout_width="166dp"
+        android:layout_height="152dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="8dp"
         android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/mainLoginButton"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintTop_toBottomOf="@+id/mainLoginPasswordEditText"
         app:srcCompat="@drawable/ic_rbmq4ipuhk" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/mainLoginInvalidUsernameAndOrPasswordText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
@@ -89,6 +88,16 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <Button
+        android:id="@+id/signUpButton"
+        android:layout_width="95dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="14dp"
+        android:layout_marginRight="144dp"
+        android:text="Sign Up"
+        app:layout_constraintBottom_toTopOf="@+id/mainLoginInvalidUsernameAndOrPasswordText"
         app:layout_constraintRight_toRightOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
