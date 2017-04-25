@@ -13,6 +13,7 @@
 #  04/06/17   Layne H.  Created serializer for the Vendor database table.
 #  04/07/17   Layne H.  Created serializer for the Customer, MenuCategory, MenuItem,
 #                       Sale, Review, ReviewFlag, and Advertising database tables.
+#  04/24/17   Layne H.  Added phone column to Vendor Serializer.
 #
 ####################################################################################
 
@@ -22,7 +23,7 @@ from rest_framework import serializers
 class VendorSerializer(serializers.HyperlinkedModelSerializer):
         class Meta:
                 model = Vendor
-                fields = ('vendorAddress', 'emailV', 'passwordV', 'phone', 'rating', 'nameV', 'approved')
+                fields = ('vendorAddress', 'emailV', 'passwordV', 'phone', 'paypal','rating', 'nameV', 'approved')
  
 class CustomerSerializer(serializers.HyperlinkedModelSerializer):
         class Meta:
