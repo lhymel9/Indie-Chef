@@ -26,6 +26,7 @@ class Vendor(models.Model):
         emailV = models.CharField(max_length=40)
         passwordV = models.CharField(max_length=40)
         phone = models.CharField(max_length=40)
+        paypal = models.CharField(max_length=40)
         rating = models.CharField(max_length=4)
         nameV = models.CharField(max_length=40)
         approved = models.BooleanField()
