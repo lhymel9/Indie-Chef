@@ -14,6 +14,7 @@
 #  04/06/17   Layne H.  Created the ViewSet for the Vendor table.
 #  04/08/17   Layne H.  Created ViewSets for Customer, MenuCategory, MenuItem, Sale,
 #           Advertising, Review, and ReviewFlag tables.
+#  04/24/17   Layne H.  Added paypal column to Vendor table.
 #                                                                               
 ####################################################################################
 
