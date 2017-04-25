@@ -77,6 +77,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'IndiePantry.wsgi.application'
 
+DATABASE = {
+    'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'ebdb',
         'USER': 'Razuik7659812',
