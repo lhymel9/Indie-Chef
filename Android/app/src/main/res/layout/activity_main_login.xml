@@ -94,10 +94,11 @@
         android:id="@+id/signUpButton"
         android:layout_width="95dp"
         android:layout_height="45dp"
-        android:layout_marginBottom="14dp"
-        android:layout_marginRight="144dp"
+        android:layout_marginBottom="32dp"
         android:text="Sign Up"
+        android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/mainLoginInvalidUsernameAndOrPasswordText"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

@@ -7,10 +7,11 @@
  *   
  *   REFERENCE:  models.py
  *   
- *     DATE       BY       DESCRIPTION  
- *   =========  =======   =============
- *   4/22/2017  Layne H.  All Constructor and Methods created.
- *   
+ *      DATE       BY       DESCRIPTION  
+ *   ==========  =======   =============
+ *   04/22/2017  Layne H.  All Constructor and Methods created.
+ *   04/25/2017  Layne H.  Added paypal, lat, and lon attributes.
+ *                         Removed address attribute.
  *   
  */
 
@@ -20,34 +21,59 @@ import android.content.Context;
 import android.location.Geocoder;
 import android.location.Location;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class Vendor {
-	private String address;
+	private String latitude;
+	private String longitude;
 	private String name;
 	private String email;
 	private String rating;
+	private String paypal;
 	private String phone;
 	private String password;
 	private Boolean approved;
-	private Location location;
 	
 	/*
 	 * Creates a Vendor object.
 	 * 
 	 * @param name: String name being given to the vendor object.
-	 *        address: String address being given to the vendor object.
 	 *        email: String email being given to the vendor object.
-	 */
-	public Vendor(String name, String address, String email) {
-		this.address = address;
+	 *        paypal: String paypal address being given to the vendor object.
+	*/
+	public Vendor(String name, String email, String paypal) {
+		latitude = "30.54";
+		longitude =  "91.14";
 		this.name = name;
 		this.email = email;
-		String rating;
-		String phone;
-		String password;
-		Boolean approved;
+		rating = "3.5";
+		phone = "555-5555";
+		this.paypal = paypal;
+		password = "1234";
+		approved = true;
 		Location location;
 	}
+
 	
+	/*
+         * Sets a latitude for the Vendor object.
+         * 
+         * @param rating: String latitude variable of the particular vendor.
+         */
+	public void setLat(String latitude) {
+		this.latitude = latitude;
+	}
+
+	/*
+         * Sets a longitude for the Vendor object.
+         * 
+         * @param rating: String longitude variable of the particular vendor.
+         */
+	public void setLon(String longitude) {
+                this.longitude = longitude;
+        }
+
 	/*
 	 * Sets a rating for the Vendor object.
 	 * 
@@ -74,21 +100,34 @@ public class Vendor {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	/*
+         * Sets an approval status for the Vendor object.
+         * 
+         * @param rating: Boolean approved variable of the particular vendor.
+         */
 	public void setApproved(Boolean approved) {
 		this.approved = approved;
 	}
-
-	public void setLocation(Location location){ this.location = location;}
+	
 	/*
-	 * Obtains the address of a particular Vendor object.
-	 * 
-	 * @return address string
-	 */
-	public String getAddress() {
-		return address;
+         * Obtains the latitude of a particular Vendor object.
+         * 
+         * @return latitude String variable
+         */
+	public String getLat() {
+		return latitude;
+	}
+	
+	/*
+         * Obtains the longitude of a particular Vendor object.
+         * 
+         * @return longitude String variable
+         */
+	public String getLon() {
+		return longitude;
 	}
 
-	public Location getLocation(){ return location;}
 	/*
 	 * Obtains the name of a particular Vendor object.
 	 * 
@@ -124,7 +163,16 @@ public class Vendor {
 	public String getPhone() {
 		return phone;
 	}
-	
+        
+	/*
+         * Obtains the paypal address of a particular Vendor object.
+         * 
+         * @return paypal address string
+         */
+        public String getPaypal() {
+                return paypal;
+        }
+ 	
 	/*
 	 * Obtains the approval status of a particular Vendor object.
 	 * 
@@ -133,4 +181,23 @@ public class Vendor {
 	public Boolean getApproved() {
 		return approved;
 	}
+
+	public String toJson(){
+        try{
+            JSONObject myJson = new JSONObject();
+            myJson.put("latV",latitude);
+            myJson.put("lonV",longitude);
+            myJson.put("emailV",email);
+            myJson.put("passwordV",password);
+            myJson.put("phone",phone);
+            myJson.put("paypal","1");
+            myJson.put("rating",rating);
+            myJson.put("nameV",name);
+            myJson.put("approved",true);
+            return myJson.toString();
+        }catch(JSONException e){
+            return e.getMessage();
+        }
+    }
+
 }

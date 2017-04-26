@@ -6,10 +6,10 @@
  *   
  *   REFERENCE:  
  *   
- *     DATE       BY       DESCRIPTION  
- *   =========  =======   =============
- *   4/22/2017  Layne H.  Created createVendorList method.
- *   
+ *      DATE       BY       DESCRIPTION  
+ *   ==========  =======   =============
+ *   04/22/2017  Layne H.  Created createVendorList method.
+ *   04/25/2017  Layne H.  Edited Vendor list creation
  *   
  */
 
@@ -58,7 +58,9 @@ class JSONCalls {
 
 			for(int i=0; i < myJson.length(); i++) {
 				JSONObject jObj = (JSONObject) myJson.get(i);
-				Vendor vendor = new Vendor(jObj.getString("nameV"), jObj.getString("vendorAddress"), jObj.getString("emailV"));
+				Vendor vendor = new Vendor(jObj.getString("nameV"), jObj.getString("emailV"), jObj.getString("paypal"));
+				vendor.setLat(jObj.getString("latV"));
+				vendor.setLon(jObj.getString("lonV"));
 				vendor.setRating(jObj.getString("rating"));
 				vendor.setPhone(jObj.getString("phone"));
 				vendor.setPassword(jObj.getString("passwordV"));

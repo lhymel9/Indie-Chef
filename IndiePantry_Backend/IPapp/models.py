@@ -16,13 +16,19 @@
 #  04/06/17   Layne H.  Added models for each database table.
 #  04/22/17   Layne H.  Removed lat and lon columns for Vendor and Customer.
 #                       Added address columns for Vendor and Customer.               
+#  04/24/17   Layne H.  Added paypal column to Vendor table
+#  04/25/17   Layne H.  Readded lat and lon for Vendor and Customer.
+#                       Removed address fields.
+#  04/25/17   Layne H.  Sale Changes: Added item series char field, 
+#                       removed menu and item foreign keys.
 #                                                                
 ####################################################################################
  
 from django.db import models
 
 class Vendor(models.Model):
-        vendorAddress = models.CharField(max_length=60)
+        latV = models.CharField(max_length=8)
+        lonV = models.CharField(max_length=8)
         emailV = models.CharField(max_length=40)
         passwordV = models.CharField(max_length=40)
         phone = models.CharField(max_length=40)
@@ -46,17 +52,18 @@ class Customer(models.Model):
         username = models.CharField(max_length=40)
         passwordC = models.CharField(max_length=40)
         nameC = models.CharField(max_length=40)
-        customerAddress = models.CharField(max_length=60)
+        latC = models.CharField(max_length=8)
+        lonC = models.CharField(max_length=8)
         emailC = models.CharField(max_length=40)
  
 class Sale(models.Model):
         date = models.DateTimeField('auto_now_add=True')
-        total = models.FloatField()
-        tax = models.FloatField()
+        series = models.CharField(max_length=350)
+        subtotal = models.CharField(max_length=10)
+        total = models.CharField(max_length=10)
+        tax = models.CharField(max_length=10)
         customer_fsale = models.ForeignKey(Customer,on_delete=models.CASCADE)
         vendor_fsale = models.ForeignKey(Vendor,on_delete=models.CASCADE)
-        menu_fsale = models.ForeignKey(MenuCategory,on_delete=models.CASCADE)
-        item_fsale = models.ForeignKey(MenuItem,on_delete=models.CASCADE)
  
 class Review(models.Model):
         text = models.CharField(max_length=140)

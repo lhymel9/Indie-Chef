@@ -52,7 +52,7 @@ public class HomeScreen extends AppCompatActivity implements  View.OnClickListen
         vendorListButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeScreen.this, VendorListActivity.class);
+                Intent intent = new Intent(HomeScreen.this, FindVendorNearYou_Activity.class);
                 startActivity(intent);
             }
         });
