@@ -10,7 +10,7 @@
 /* ======= ============== ===== =============
 /* 4/15/17 Maxwell Reeser       Created the class
 /* 4/25/17 Brandon Hollier      Added proceedToCheckout
-/*
+/* 4/26/17 Brandon Hollier      Overhauled class to use an Adapter
 /*
 /*
 /****************************************************************************************/
@@ -23,10 +23,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.LinearLayout;
+import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -37,6 +35,8 @@ public class CartActivity extends AppCompatActivity {
     public static final String TAG = CartActivity.class.getSimpleName();
 
     ArrayList<item_display> alCartItems;
+    double taxRate = 0.1;
+    double subtotal = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,12 +55,24 @@ public class CartActivity extends AppCompatActivity {
         CartItemListAdapter listAdapter = new CartItemListAdapter(this,alCartItems);
         Log.i(TAG,"listAdapter assigned"+listAdapter);
         lvCartItemList.setAdapter(listAdapter);
+
+        recalculate();
+
+    }
+
+    public void recalculate() {
+        for (item_display i : alCartItems) {
+            subtotal += i.getCost();
+        }
+        ((TextView) findViewById(R.id.tv_subtotal)).setText(String.format("$%.2f",subtotal));
+        ((TextView) findViewById(R.id.tv_tax)).setText(String.format("$%.2f",subtotal*taxRate));
+        ((TextView) findViewById(R.id.tv_total)).setText(String.format("$%.2f",subtotal+(subtotal*taxRate)));
     }
 
     /** Called when the user taps the Checkout button */
     public void proceedToCheckout(View view) {
-        Intent intent = new Intent(this, CheckoutActivity.class);
-        Double orderTotal = 4.95;
+        Intent intent = new Intent(this, PayPalActivity.class);
+        Double orderTotal = subtotal;
         intent.putExtra(EXTRA_ORDER_TOTAL, orderTotal);
         startActivity(intent);
     }

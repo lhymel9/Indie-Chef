@@ -23,13 +23,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.concurrent.RunnableFuture;
 
 public class CartItemListAdapter extends ArrayAdapter<item_display> {
 
@@ -69,7 +67,7 @@ public class CartItemListAdapter extends ArrayAdapter<item_display> {
         final item_display item = list.get(index);
         Log.i(TAG,"item: "+item.getName());
         // set cart item details
-        TextView tvItemName = (TextView) view.findViewById(R.id.tv_itemName);
+        TextView tvItemName = (TextView) view.findViewById(R.id.tv_vo_itemName);
         tvItemName.setText(item.getName()); // name
         TextView tvItemVendor = (TextView) view.findViewById(R.id.tv_itemVendor);
         tvItemVendor.setText(item.getVendor_name()); // vendor
@@ -81,6 +79,7 @@ public class CartItemListAdapter extends ArrayAdapter<item_display> {
             public void onClick(View v) {
                 list.remove(item);
                 notifyDataSetChanged();
+
                 Toast.makeText(parent.getContext(),"Removed "+item.getName(), Toast.LENGTH_SHORT).show();
             }
         });

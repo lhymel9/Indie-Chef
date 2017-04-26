@@ -7,8 +7,8 @@
 
     <ImageView
         android:id="@+id/iv_vo_itemThumbnail"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="6dp"
         android:layout_marginTop="8dp"
@@ -23,50 +23,28 @@
     <TextView
         android:id="@+id/tv_vo_itemName"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:text="itemName"
         android:textSize="18sp"
-        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/iv_vo_itemThumbnail"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_itemVendor"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:text="vendorName"
-        app:layout_constraintLeft_toRightOf="@+id/iv_vo_itemThumbnail"
-        app:layout_constraintTop_toBottomOf="@+id/tv_vo_itemName" />
-
-    <TextView
-        android:id="@+id/tv_itemPrice"
+        android:id="@+id/tv_vo_itemPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
         android:text="itemPrice"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/btn_itemDelete"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/tv_vo_itemName" />
-
-    <ImageButton
-        android:id="@+id/btn_itemDelete"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="8dp"
-        android:background="@android:color/transparent"
-        android:scaleType="centerInside"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_delete" />
+        app:layout_constraintVertical_bias="0.6" />
 
 </android.support.constraint.ConstraintLayout>
