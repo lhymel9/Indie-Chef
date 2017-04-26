@@ -42,7 +42,7 @@ public class CartActivity extends AppCompatActivity {
             return;
 
         ScrollView available_items = (ScrollView) findViewById(R.id.cartItemList);
-        LinearLayout verticalLayout = (LinearLayout) findViewById(R.id.cartLinearLayout);
+        LinearLayout verticalLayout = (LinearLayout) findViewById(R.id.cartItemLinearLayout);
 
         TextView placard = (TextView) findViewById(R.id.cartPagePlacard);
         placard.setText(SideData.getUsername() + "'s Cart");

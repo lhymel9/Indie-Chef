@@ -8,8 +8,11 @@
 
     <WebView
         android:id="@+id/checkoutWebView"
-        android:layout_width="395dp"
-        android:layout_height="587dp"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp" />
+        android:layout_width="345dp"
+        android:layout_height="479dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_editor_absoluteY="-29dp" />
 </android.support.constraint.ConstraintLayout>
