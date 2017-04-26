@@ -2,7 +2,8 @@
  * 
  *   FILE NAME:  JSONCalls.java
  *   
- *   DESCRIPTION:  This file contains all methods associated with calling the REST api and parsing JSON data.
+ *   DESCRIPTION:  This file contains a method for obtaining an ArrayList of Vendor objects.
+ *                 These vendor objects are constructed from data in the REST API.
  *   
  *   REFERENCE:  
  *   
