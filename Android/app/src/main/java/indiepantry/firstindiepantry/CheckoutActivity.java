@@ -33,7 +33,7 @@ import static indiepantry.firstindiepantry.CartActivity.*;
 
 public class CheckoutActivity extends AppCompatActivity {
 
-    final static String TAG = "CheckoutActivity";
+    final static String TAG = "IP.CheckoutActivity";
 
     private WebView checkoutWebView;
     String checkoutURL;
@@ -54,7 +54,7 @@ public class CheckoutActivity extends AppCompatActivity {
         // Generate PayPal Checkout URL
         String checkoutURL_base = "https://www.paypal.com/cgi-bin/webscr?cmd=_cart&upload=1&rm=2&return=success&cancel_return=cancelled&no_shipping=1";
         int invoice = 4123784;
-        String vendorPayPal = "";
+        String vendorPayPal = "bholli7@lsu.edu";
         String itemName = "donut";
         String itemPrice = "3.97";
         double tax = 0.05;
@@ -72,6 +72,8 @@ public class CheckoutActivity extends AppCompatActivity {
         builder.append("&tax_cart=");
         builder.append(taxCart);
         checkoutURL = builder.toString();
+
+        //dialog = ProgressDialog.show(CheckoutActivity.this,"Checkout","Please wait...", false);
 
         loadWebView();
     }
