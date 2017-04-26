@@ -9,7 +9,7 @@
 /* DATE BY CHANGE         REF   DESCRIPTION
 /* ======= ============== ===== =============
 /* 4/15/17 Maxwell Reeser       Created the class
-/*
+/* 4/25/17 Brandon Hollier      Added proceedToCheckout
 /*
 /*
 /*
@@ -27,17 +27,19 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
 public class CartActivity extends AppCompatActivity {
+
+    public static final String EXTRA_ORDER_TOTAL = "indiepantry.firstindiepantry.CART_TOTAL";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
 
+        if (savedInstanceState != null)
+            return;
 
         ScrollView available_items = (ScrollView) findViewById(R.id.cartItemList);
         LinearLayout verticalLayout = (LinearLayout) findViewById(R.id.cartLinearLayout);
@@ -86,5 +88,11 @@ public class CartActivity extends AppCompatActivity {
 
     }
 
-
+    /** Called when the user taps the Checkout button */
+    public void proceedToCheckout(View view) {
+        Intent intent = new Intent(this, CheckoutActivity.class);
+        Double orderTotal = 4.95;
+        intent.putExtra(EXTRA_ORDER_TOTAL, orderTotal);
+        startActivity(intent);
+    }
 }
