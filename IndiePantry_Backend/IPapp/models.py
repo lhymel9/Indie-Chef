@@ -19,6 +19,8 @@
 #  04/24/17   Layne H.  Added paypal column to Vendor table
 #  04/25/17   Layne H.  Readded lat and lon for Vendor and Customer.
 #                       Removed address fields.
+#  04/25/17   Layne H.  Sale Changes: Added item series char field, 
+#                       removed menu and item foreign keys.
 #                                                                
 ####################################################################################
  
@@ -56,12 +58,12 @@ class Customer(models.Model):
  
 class Sale(models.Model):
         date = models.DateTimeField('auto_now_add=True')
-        total = models.FloatField()
-        tax = models.FloatField()
+        series = models.CharField(max_length=350)
+        subtotal = models.CharField(max_length=10)
+        total = models.CharField(max_length=10)
+        tax = models.CharField(max_length=10)
         customer_fsale = models.ForeignKey(Customer,on_delete=models.CASCADE)
         vendor_fsale = models.ForeignKey(Vendor,on_delete=models.CASCADE)
-        menu_fsale = models.ForeignKey(MenuCategory,on_delete=models.CASCADE)
-        item_fsale = models.ForeignKey(MenuItem,on_delete=models.CASCADE)
  
 class Review(models.Model):
         text = models.CharField(max_length=140)

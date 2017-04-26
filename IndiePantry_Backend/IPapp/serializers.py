@@ -45,7 +45,7 @@ class MenuItemSerializer(serializers.HyperlinkedModelSerializer):
 class SaleSerializer(serializers.HyperlinkedModelSerializer):
         class Meta:
                 model = Sale
-                fields = ('date', 'total', 'tax', 'customer_fsale', 'item_fsale', 'menu_fsale', 'vendor_fsale')
+                fields = ('date', 'series', 'subtotal', 'total', 'tax', 'customer_fsale', 'vendor_fsale')
  
 class ReviewSerializer(serializers.HyperlinkedModelSerializer):
         class Meta:
