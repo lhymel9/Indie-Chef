@@ -27,8 +27,7 @@
         </activity>
         <activity android:name=".HomeScreen" />
         <activity android:name=".Item_Activity" />
-        <activity android:name=".CartActivity"
-                  android:parentActivityName=".HomeScreen" />
+        <activity android:name=".CartActivity" />
         <activity android:name=".VendorPageActivity" />
 
         <!--
