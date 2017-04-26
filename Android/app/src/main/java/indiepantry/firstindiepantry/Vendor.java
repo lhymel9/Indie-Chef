@@ -43,8 +43,8 @@ public class Vendor {
 	 *        paypal: String paypal address being given to the vendor object.
 	*/
 	public Vendor(String name, String email, String paypal) {
-		latitude = "44.5";
-		longitude =  "35.75";
+		latitude = "30.54";
+		longitude =  "91.14";
 		this.name = name;
 		this.email = email;
 		rating = "3.5";

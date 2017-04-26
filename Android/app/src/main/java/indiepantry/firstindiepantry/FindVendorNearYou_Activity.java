@@ -9,9 +9,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -24,21 +26,26 @@ import java.net.URLConnection;
 import java.util.ArrayList;
 
 public class FindVendorNearYou_Activity extends AppCompatActivity {
-    ArrayList<Vendor> vendors;
-    ArrayList<Location> locations;
-    LinearLayout linearLayout = (LinearLayout) findViewById(R.id.vendorList);
+    ArrayList<Vendor> vendors = new ArrayList<>();
+    ArrayList<Location> locations = new ArrayList<>();
+    LinearLayout linearLayout = null;
     Location myLocation = new Location(LocationManager.GPS_PROVIDER);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        myLocation.setLatitude(30.45);
+        myLocation.setLongitude(91.22);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_vendor_near_you);
-
-
+        linearLayout = (LinearLayout) findViewById(R.id.vendorList);
+        TextView textView = (TextView) findViewById(R.id.FindVendorNearYouTextView);
+        textView.setText(myLocation.toString());
         createVendorsArrayList();
         createLocationsArrayList();
+        if(vendors.size() == 0){
 
-
+            //textView.setText("None");
+        }
         sortVendors();
 
         for (int i = 0; i < vendors.size(); i++) {
@@ -111,6 +118,7 @@ public class FindVendorNearYou_Activity extends AppCompatActivity {
             InputStream in = null;
             try {//From Layne's code
                 in = openConnection(params[0]);
+
                 BufferedReader br = new BufferedReader(new InputStreamReader(in));
                 String output;
                 while ((output = br.readLine()) != null)
@@ -124,14 +132,15 @@ public class FindVendorNearYou_Activity extends AppCompatActivity {
 
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
+            //textView.setText(s);
             if (s.substring(0, 4).contains("[")) {
                 try {
                     org.json.JSONArray myJson = new org.json.JSONArray(s);
                     for (int i = 0; i < myJson.length(); i++) {
                         JSONObject jObj = (JSONObject) myJson.get(i);
-                        Vendor vendor = new Vendor(jObj.getString("nameV"), jObj.getString("vendorAddress"), jObj.getString("emailV"));
-                        vendor.setLat(jObj.getString("latV"));
-                        vendor.setLon(jObj.getString("lonV"));
+                        Vendor vendor = new Vendor(jObj.getString("nameV"), jObj.getString("emailV"), jObj.getString("paypal"));
+                        //vendor.setLat(jObj.getString("latV"));
+                        //vendor.setLon(jObj.getString("lonV"));
                         vendor.setRating(jObj.getString("rating"));
                         vendor.setPhone(jObj.getString("phone"));
                         vendor.setPassword(jObj.getString("passwordV"));
@@ -149,6 +158,30 @@ public class FindVendorNearYou_Activity extends AppCompatActivity {
                 } catch (JSONException e) {
                     return;
                 }
+            }
+            createLocationsArrayList();
+
+            sortVendors();
+
+            for (int i = 0; i < vendors.size(); i++) {
+                Button newButton = new Button(FindVendorNearYou_Activity.this);
+                newButton.setTag(vendors.get(i));
+                newButton.setText(vendors.get(i).getName()
+                        + " Rating: " + vendors.get(i).getRating()
+                        + "\nDistance (km): " + myLocation.distanceTo(locations.get(i))/1000);
+                newButton.setVisibility(Button.VISIBLE);
+                newButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Button button = (Button) v;
+                        Vendor vendor = (Vendor) button.getTag();
+                        Intent intent = new Intent(FindVendorNearYou_Activity.this, VendorPageActivity.class);
+                        SideData.setTemp_vendor(vendor);
+                        startActivity(intent);
+                    }
+                });
+
+                linearLayout.addView(newButton);
             }
         }
 
