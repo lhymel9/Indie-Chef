@@ -58,11 +58,11 @@ public class CreateAccountActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
                 else{
-                    EditText editName = (EditText) findViewById(R.id.createAccountNameEditText);
-                    EditText editPassword = (EditText) findViewById(R.id.createAccountPasswordEditText);
-                    EditText editEmail = (EditText) findViewById(R.id.createAccountEmailEditText);
-                    EditText editAddress = (EditText) findViewById(R.id.createAccountAddressEditText);
-                    EditText editUsername = (EditText) findViewById(R.id.createAccountUsernameEditText);
+                    EditText editName = (EditText) findViewById(R.id.createCustomerAccountNameEditText);
+                    EditText editPassword = (EditText) findViewById(R.id.createCustomerAccountPasswordEditText);
+                    EditText editEmail = (EditText) findViewById(R.id.createCustomerAccountEmailEditText);
+                    EditText editAddress = (EditText) findViewById(R.id.createCustomerAccountAddressEditText);
+                    EditText editUsername = (EditText) findViewById(R.id.createCustomerAccountUsernameEditText);
                     String name = editName.getText().toString();
                     String password = editPassword.getText().toString();
                     String email = editEmail.getText().toString();
@@ -83,7 +83,7 @@ public class CreateAccountActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 TextView usernameTextview = (TextView) findViewById(R.id.createAccountUsernameText);
-                EditText usernameEdit = (EditText) findViewById(R.id.createAccountUsernameEditText);
+                EditText usernameEdit = (EditText) findViewById(R.id.createCustomerAccountUsernameEditText);
                 if(!isVendor){
                     usernameTextview.setVisibility(TextView.INVISIBLE);
                     usernameEdit.setVisibility(EditText.INVISIBLE);
@@ -103,11 +103,11 @@ public class CreateAccountActivity extends AppCompatActivity {
 
     public void newCustomer(){
 
-        EditText editName = (EditText) findViewById(R.id.createAccountNameEditText);
-        EditText editPassword = (EditText) findViewById(R.id.createAccountPasswordEditText);
-        EditText editEmail = (EditText) findViewById(R.id.createAccountEmailEditText);
-        EditText editAddress = (EditText) findViewById(R.id.createAccountAddressEditText);
-        EditText editUsername = (EditText) findViewById(R.id.createAccountUsernameEditText);
+        EditText editName = (EditText) findViewById(R.id.createCustomerAccountNameEditText);
+        EditText editPassword = (EditText) findViewById(R.id.createCustomerAccountPasswordEditText);
+        EditText editEmail = (EditText) findViewById(R.id.createCustomerAccountEmailEditText);
+        EditText editAddress = (EditText) findViewById(R.id.createCustomerAccountAddressEditText);
+        EditText editUsername = (EditText) findViewById(R.id.createCustomerAccountUsernameEditText);
         String name = editName.getText().toString();
         String password = editPassword.getText().toString();
         String email = editEmail.getText().toString();

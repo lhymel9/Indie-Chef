@@ -1,5 +1,8 @@
 package indiepantry.firstindiepantry;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /**
  * Created by Maxwell on 4/24/2017.
  */
@@ -21,13 +24,20 @@ public class Customer {
     }
 
     public String toJson(){
-        return "{" +
-                "        \"username\":\"" + username + "\"," +
-                "        \"passwordC\": \"" + password + "\"," +
-                "        \"nameC\": \"" + name + "\"," +
-                "        \"customerAddress\": \"" + address +"\"," +
-                "        \"emailC\": \"" + email+"\"" +
-                "    }";
+        try{
+            JSONObject json = new JSONObject();
+            json.put("username",username);
+            json.put("passwordC",password);
+            json.put("nameC", name);
+            json.put("latC",45.67);
+            json.put("lonC", -75.00);
+            json.put("emailC",email);
+            return json.toString();
+        }catch(JSONException e){
+            e.getMessage();
+            return "-1";
+        }
+
     }
 
     public String getName(){ return name; }

@@ -21,6 +21,9 @@ import android.content.Context;
 import android.location.Geocoder;
 import android.location.Location;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class Vendor {
 	private String latitude;
 	private String longitude;
@@ -178,4 +181,23 @@ public class Vendor {
 	public Boolean getApproved() {
 		return approved;
 	}
+
+	public String toJson(){
+        try{
+            JSONObject myJson = new JSONObject();
+            myJson.put("latV",location.getLatitude());
+            myJson.put("lonV",location.getLongitude());
+            myJson.put("emailV",email);
+            myJson.put("passwordV",password);
+            myJson.put("phone",phone);
+            myJson.put("paypal","1");
+            myJson.put("rating",rating);
+            myJson.put("nameV",name);
+            myJson.put("approved",true);
+            return myJson.toString();
+        }catch(JSONException e){
+            return e.getMessage();
+        }
+    }
+
 }
