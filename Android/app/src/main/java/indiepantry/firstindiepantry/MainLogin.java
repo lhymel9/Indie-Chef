@@ -2,7 +2,7 @@
 /*
 /* FILE NAME: MainLogin.java
 /*
-/* DESCRIPTION:
+/* DESCRIPTION: Covers authentication of username and password, and allows account creation
 /*
 /* REFERENCE:
 /*

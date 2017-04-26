@@ -1,3 +1,19 @@
+/****************************************************************************************/
+/*
+/* FILE NAME: CreateNewCustomerActivity.java
+/*
+/* DESCRIPTION: Activity class for handling creation of new user account
+/*
+/* REFERENCE:
+/*
+/* DATE BY CHANGE         REF   DESCRIPTION
+/* ======= ============== ===== =============
+/* 4/24/17 Maxwell Reeser       Created the class
+/*
+/*
+/*
+/****************************************************************************************/
+
 package indiepantry.firstindiepantry;
 
 import android.os.AsyncTask;

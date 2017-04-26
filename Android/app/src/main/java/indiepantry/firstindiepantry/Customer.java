@@ -1,3 +1,20 @@
+/****************************************************************************************/
+/*
+/* FILE NAME: Customer.java
+/*
+/* DESCRIPTION: Class for storing information on a customer, as for login or account creation
+/*      purpose
+/*
+/* REFERENCE:
+/*
+/* DATE BY CHANGE         REF   DESCRIPTION
+/* ======= ============== ===== =============
+/* 4/24/17 Maxwell Reeser       Created the class
+/*
+/*
+/*
+/****************************************************************************************/
+
 package indiepantry.firstindiepantry;
 
 import org.json.JSONException;

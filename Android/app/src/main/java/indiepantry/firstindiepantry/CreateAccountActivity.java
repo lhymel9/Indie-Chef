@@ -2,7 +2,8 @@
 /*
 /* FILE NAME: CreateAccountActivity.java
 /*
-/* DESCRIPTION: Activity to handle creating new user login
+/* DESCRIPTION: Activity to handle creating new account, and redirect to creation activity
+/*      for vendor or customer
 /*
 /* REFERENCE:
 /*
