@@ -28,6 +28,8 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -49,26 +51,43 @@ public class CreateAccountActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
 
+        final EditText editCustomerName = (EditText) findViewById(R.id.createCustomerAccountNameEditText);
+        final EditText editCustomerPassword = (EditText) findViewById(R.id.createCustomerAccountPasswordEditText);
+        final EditText editCustomerEmail = (EditText) findViewById(R.id.createCustomerAccountEmailEditText);
+        final EditText editCustomerAddress = (EditText) findViewById(R.id.createCustomerAccountAddressEditText);
+        final EditText editCustomerUsername = (EditText) findViewById(R.id.createCustomerAccountUsernameEditText);
+
+        final EditText editVendorName = (EditText) findViewById(R.id.createVendorAccountNameEditText);
+        final EditText editVendorPassword = (EditText) findViewById(R.id.createVendorAccountPasswordEditText);
+        final EditText editVendorEmail = (EditText) findViewById(R.id.createVendorAccountEmailEditText);
+        final EditText editVendorAddress = (EditText) findViewById(R.id.createVendorAccountAddressEditText);
+        final EditText editVendorPhone = (EditText) findViewById(R.id.createVendorAccountPhoneEditText);
+
+        final TextView vendorPhone = (TextView) findViewById(R.id.createVendorAccountPhoneNumberText);
+
         Button submit_button = (Button) findViewById(R.id.createAccountSignUpButton);
         submit_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(isVendor){
-                    Intent intent = new Intent(CreateAccountActivity.this, CreateAccountActivity.class);
+                    String name = editVendorName.getText().toString();
+                    String password = editVendorPassword.getText().toString();
+                    String email = editVendorEmail.getText().toString();
+                    String address = editVendorAddress.getText().toString();
+                    String phone = editVendorPhone.getText().toString();
+
+                    Vendor vendor = new Vendor(name, email, "1");
+                    SideData.setTemp_vendor(vendor);
+                    Intent intent = new Intent(CreateAccountActivity.this, CreateNewVendorActivity.class);
                     startActivity(intent);
                 }
                 else{
-                    EditText editName = (EditText) findViewById(R.id.createCustomerAccountNameEditText);
-                    EditText editPassword = (EditText) findViewById(R.id.createCustomerAccountPasswordEditText);
-                    EditText editEmail = (EditText) findViewById(R.id.createCustomerAccountEmailEditText);
-                    EditText editAddress = (EditText) findViewById(R.id.createCustomerAccountAddressEditText);
-                    EditText editUsername = (EditText) findViewById(R.id.createCustomerAccountUsernameEditText);
-                    String name = editName.getText().toString();
-                    String password = editPassword.getText().toString();
-                    String email = editEmail.getText().toString();
-                    String address = editAddress.getText().toString();
-                    String username = editUsername.getText().toString();
-                    //String u, String p, String n, String a, String e
+                    String name = editCustomerName.getText().toString();
+                    String password = editCustomerPassword.getText().toString();
+                    String email = editCustomerEmail.getText().toString();
+                    String address = editCustomerAddress.getText().toString();
+                    String username = editCustomerUsername.getText().toString();
+
                     Customer newCustomer = new Customer(username, password, name, address, email);
                     SideData.setCustomer(newCustomer);
                     Intent intent = new Intent(CreateAccountActivity.this, CreateNewCustomerActivity.class);
@@ -87,8 +106,38 @@ public class CreateAccountActivity extends AppCompatActivity {
                 if(!isVendor){
                     usernameTextview.setVisibility(TextView.INVISIBLE);
                     usernameEdit.setVisibility(EditText.INVISIBLE);
+
+                    editCustomerAddress.setVisibility(EditText.INVISIBLE);
+                    editCustomerEmail.setVisibility(EditText.INVISIBLE);
+                    editCustomerName.setVisibility(EditText.INVISIBLE);
+                    editCustomerPassword.setVisibility(EditText.INVISIBLE);
+                    editCustomerUsername.setVisibility(EditText.INVISIBLE);
+
+                    editVendorAddress.setVisibility(TextView.VISIBLE);
+                    editVendorEmail.setVisibility(TextView.VISIBLE);
+                    editVendorName.setVisibility(TextView.VISIBLE);
+                    editVendorPassword.setVisibility(TextView.VISIBLE);
+                    editVendorPhone.setVisibility(TextView.VISIBLE);
+                    vendorPhone.setVisibility(TextView.VISIBLE);
+
+
+
                     isVendor = true;
+
                 } else{
+                    editCustomerAddress.setVisibility(EditText.VISIBLE);
+                    editCustomerEmail.setVisibility(EditText.VISIBLE);
+                    editCustomerName.setVisibility(EditText.VISIBLE);
+                    editCustomerPassword.setVisibility(EditText.VISIBLE);
+                    editCustomerUsername.setVisibility(EditText.VISIBLE);
+
+                    editVendorAddress.setVisibility(TextView.INVISIBLE);
+                    editVendorEmail.setVisibility(TextView.INVISIBLE);
+                    editVendorName.setVisibility(TextView.INVISIBLE);
+                    editVendorPassword.setVisibility(TextView.INVISIBLE);
+                    editVendorPhone.setVisibility(TextView.INVISIBLE);
+                    vendorPhone.setVisibility(TextView.INVISIBLE);
+
                     usernameTextview.setVisibility(TextView.VISIBLE);
                     usernameEdit.setVisibility(EditText.VISIBLE);
                     isVendor = false;

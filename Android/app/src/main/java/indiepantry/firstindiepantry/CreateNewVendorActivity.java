@@ -41,28 +41,15 @@ public class CreateNewVendorActivity extends AppCompatActivity {
         protected String doInBackground(String... params) {
             OutputStream out = null;
             try{//From Layne's code
-                out = openConnection("http://env2.zs6znymmyc.us-east-1.elasticbeanstalk.com/api/customers/",params[0]);
+                out = openConnection("http://env2.zs6znymmyc.us-east-1.elasticbeanstalk.com/api/vendors/",params[0]);
                 if(out != null) {
-                    /*
-                    BufferedOutputStream br = (BufferedOutputStream) out;
-                    byte[] bytes = params[0].getBytes("UTF-8");
-                    if (br != null) {
-                        br.write(bytes);
-                        br.flush();
-                        br.close();
-
-                    }
-                    out.close();
-                    */
-
+                    return "non_null";
                 }else{
                     return "";
                 }
 
-                return "non_null";
-            }/*catch(IOException e){
-                return e.getMessage();
-            }*/finally{
+
+            }finally{
                 return "";
             }
         }
@@ -70,10 +57,8 @@ public class CreateNewVendorActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            if(!s.equals("non_null")){
-                TextView textView = (TextView) findViewById(R.id.newCustomerText);
-                textView.setText(SideData.getReturnVal());
-            }
+            TextView textView = (TextView) findViewById(R.id.newVendorText);
+            textView.setText(SideData.getReturnVal());
 
         }
 
@@ -113,6 +98,7 @@ public class CreateNewVendorActivity extends AppCompatActivity {
                 httpConn.connect();
                 resCode = httpConn.getResponseCode();
                 if (resCode == HttpURLConnection.HTTP_OK) {
+                    SideData.setReturnVal(Integer.toString(resCode));
                     out = httpConn.getOutputStream();
                 }
                 else{

@@ -43,15 +43,15 @@ public class Vendor {
 	 *        paypal: String paypal address being given to the vendor object.
 	*/
 	public Vendor(String name, String email, String paypal) {
-		String latitude;
-		String longitude;
+		latitude = "44.5";
+		longitude =  "35.75";
 		this.name = name;
 		this.email = email;
-		String rating;
-		String phone;
+		rating = "3.5";
+		phone = "555-5555";
 		this.paypal = paypal;
-		String password;
-		Boolean approved;
+		password = "1234";
+		approved = true;
 		Location location;
 	}
 
@@ -185,8 +185,8 @@ public class Vendor {
 	public String toJson(){
         try{
             JSONObject myJson = new JSONObject();
-            myJson.put("latV",location.getLatitude());
-            myJson.put("lonV",location.getLongitude());
+            myJson.put("latV",latitude);
+            myJson.put("lonV",longitude);
             myJson.put("emailV",email);
             myJson.put("passwordV",password);
             myJson.put("phone",phone);

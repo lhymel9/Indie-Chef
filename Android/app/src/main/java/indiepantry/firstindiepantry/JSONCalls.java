@@ -59,8 +59,8 @@ class JSONCalls {
 			for(int i=0; i < myJson.length(); i++) {
 				JSONObject jObj = (JSONObject) myJson.get(i);
 				Vendor vendor = new Vendor(jObj.getString("nameV"), jObj.getString("emailV"), jObj.getString("paypal"));
-				vendor.setLat(jObj.getString("latV");
-				vendor.setLon(jObj.getString("lonV");
+				vendor.setLat(jObj.getString("latV"));
+				vendor.setLon(jObj.getString("lonV"));
 				vendor.setRating(jObj.getString("rating"));
 				vendor.setPhone(jObj.getString("phone"));
 				vendor.setPassword(jObj.getString("passwordV"));

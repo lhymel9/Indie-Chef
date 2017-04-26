@@ -74,7 +74,7 @@ public class VendorListActivity extends AppCompatActivity {
                         JSONObject jObj = (JSONObject) myJson.get(i);
                         //Customer customer = new Customer(jObj.getString("username"),jObj.getString("passwordC"),jObj.getString("nameC"),jObj.getString("customerAddress"),jObj.getString("emailC"));
                         //queryCustomers.add(customer);
-                        Vendor vendor = new Vendor(jObj.getString("nameV"), jObj.getString("vendorAddress"), jObj.getString("emailV"));
+                        Vendor vendor = new Vendor(jObj.getString("nameV"), jObj.getString("emailV"), jObj.getString("paypal"));
                         queryVendors.add(vendor);
                     }
                 }catch(JSONException e){
@@ -85,7 +85,7 @@ public class VendorListActivity extends AppCompatActivity {
             else{
                 try{
                     JSONObject jObj = new JSONObject(s);
-                    Vendor vendor = new Vendor(jObj.getString("nameV"), jObj.getString("vendorAddress"), jObj.getString("emailV"));
+                    Vendor vendor = new Vendor(jObj.getString("nameV"), jObj.getString("emailV"), jObj.getString("paypal"));
                     queryVendors.add(vendor);
                     //Customer customer = new Customer(jObj.getString("username"),jObj.getString("passwordC"),jObj.getString("nameC"),jObj.getString("customerAddress"),jObj.getString("emailC"));
                     //queryCustomers.add(customer);

@@ -21,12 +21,12 @@ public class FindVendorNearYou_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_vendor_near_you);
 
-        vendors[0].getLocation().setLatitude(23.4);
-        vendors[0].getLocation().setLongitude(33);
-        vendors[1].getLocation().setLatitude(30.1);
-        vendors[1].getLocation().setLongitude(12.3);
-        vendors[2].getLocation().setLatitude(42.3);
-        vendors[2].getLocation().setLongitude(53.2);
+        vendors[0].setLat("23.4");
+        vendors[0].setLon("33");
+        vendors[1].setLat("30.1");
+        vendors[1].setLon("12.3");
+        vendors[2].setLat("42.3");
+        vendors[2].setLon("53.2");
 
         vendors = sortVendors(vendors);
 
@@ -37,9 +37,12 @@ public class FindVendorNearYou_Activity extends AppCompatActivity {
                     //startActivity(new Intent(FindVendorNearYou_Activity.this, <INSERT VENDOR MENU ACTIVITY HERE>));
                 }
             });
+            Location location = new Location("");
+            location.setLatitude(Double.parseDouble(vendor.getLat()));
+            location.setLongitude(Double.parseDouble(vendor.getLon()));
             newButton.setText(vendor.getName()
                     + " Rating: " + vendor.getRating()
-                    + "Distance: " + myLocation.distanceTo(vendor.getLocation()));
+                    + "Distance: " + myLocation.distanceTo(location));
             linearLayout.addView(newButton);
         }
     }
@@ -49,8 +52,14 @@ public class FindVendorNearYou_Activity extends AppCompatActivity {
         float distance;
         for(int i = 0; i < vendors.length - 1; i++){
             for(int j = i + 1; j < vendors.length; j++){
-                distance = myLocation.distanceTo(vendors[i].getLocation());
-                if(distance < myLocation.distanceTo(vendors[j].getLocation())){
+                Location location_i = new Location("");
+                location_i.setLatitude(Double.parseDouble(vendors[i].getLat()));
+                location_i.setLongitude(Double.parseDouble(vendors[i].getLon()));
+                distance = myLocation.distanceTo(location_i);
+                Location location_j = new Location("");
+                location_j.setLatitude(Double.parseDouble(vendors[j].getLat()));
+                location_j.setLongitude(Double.parseDouble(vendors[j].getLon()));
+                if(distance < myLocation.distanceTo(location_j)){
                     temp = vendors[j];
                     vendors[j] = vendors[i];
                     vendors[i] = temp;
