@@ -1,6 +1,6 @@
 /****************************************************************************************/
 /*
-/* FILE NAME: CheckoutActivity.java
+/* FILE NAME: PayPalActivity.java
 /*
 /* DESCRIPTION: Activity for user to submit an order through PayPal
 /*
@@ -31,9 +31,9 @@ import android.webkit.WebViewClient;
 
 import static indiepantry.firstindiepantry.CartActivity.*;
 
-public class CheckoutActivity extends AppCompatActivity {
+public class PayPalActivity extends AppCompatActivity {
 
-    final static String TAG = "IP.CheckoutActivity";
+    final static String TAG = "PayPalActivity";
 
     private WebView checkoutWebView;
     String checkoutURL;
@@ -44,20 +44,21 @@ public class CheckoutActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_checkout);
+        setContentView(R.layout.activity_paypal);
 
         // Get the Intent that started this activity and extract the string
         Intent intent = getIntent();
         Double orderTotal = intent.getDoubleExtra(EXTRA_ORDER_TOTAL,0);
 
+
         Log.i(TAG,"created");
         // Generate PayPal Checkout URL
         String checkoutURL_base = "https://www.paypal.com/cgi-bin/webscr?cmd=_cart&upload=1&rm=2&return=success&cancel_return=cancelled&no_shipping=1";
         int invoice = 4123784;
-        String vendorPayPal = "bholli7@lsu.edu";
-        String itemName = "donut";
-        String itemPrice = "3.97";
-        double tax = 0.05;
+        String vendorPayPal = "vendor@indiepantry.com";
+        String itemName = "order";
+        String itemPrice = "";
+        double tax = orderTotal*0.1;
         String taxCart = String.format("%.2f", tax);
         StringBuilder builder = new StringBuilder();
         builder.append(checkoutURL_base);
@@ -72,8 +73,6 @@ public class CheckoutActivity extends AppCompatActivity {
         builder.append("&tax_cart=");
         builder.append(taxCart);
         checkoutURL = builder.toString();
-
-        //dialog = ProgressDialog.show(CheckoutActivity.this,"Checkout","Please wait...", false);
 
         loadWebView();
     }

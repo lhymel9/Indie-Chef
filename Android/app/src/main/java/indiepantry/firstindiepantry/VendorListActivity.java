@@ -1,3 +1,20 @@
+/****************************************************************************************/
+/*
+/* FILE NAME: VendorListActivity.java
+/*
+/* DESCRIPTION: Activity class for handling downloading and displaying the vendor list
+/*
+/* REFERENCE:
+/*
+/* DATE BY CHANGE         REF   DESCRIPTION
+/* ======= ============== ===== =============
+/* 4/23/17 Maxwell Reeser       Created the class
+/*
+/*
+/*
+/*
+/****************************************************************************************/
+
 package indiepantry.firstindiepantry;
 
 import android.content.Intent;

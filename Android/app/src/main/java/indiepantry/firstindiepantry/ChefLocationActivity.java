@@ -1,3 +1,20 @@
+/****************************************************************************************/
+/*
+/* FILE NAME: ChefLocationActivity.java
+/*
+/* DESCRIPTION: Dead class
+/*
+/* REFERENCE:
+/*
+/* DATE BY CHANGE         REF   DESCRIPTION
+/* ======= ============== ===== =============
+/* 4/15/17 Maxwell Reeser       Created the class
+/* 4/25/17 Brandon Hollier      Added proceedToCheckout
+/*
+/*
+/*
+/****************************************************************************************/
+
 package indiepantry.firstindiepantry;
 
 import android.support.v4.app.FragmentActivity;

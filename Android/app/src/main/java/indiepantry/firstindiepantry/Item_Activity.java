@@ -1,6 +1,6 @@
 /****************************************************************************************/
 /*
-/* FILE NAME: HomeScreen.java
+/* FILE NAME: Item_Activity.java
 /*
 /* DESCRIPTION: Activity for displaying specific item, and allowing it to be added to cart
 /*

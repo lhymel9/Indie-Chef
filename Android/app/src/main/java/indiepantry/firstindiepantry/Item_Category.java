@@ -1,3 +1,19 @@
+/****************************************************************************************/
+/*
+/* FILE NAME: Item_Category.java
+/*
+/* DESCRIPTION: Class for managing an item category and its data
+/*
+/* REFERENCE:
+/*
+/* DATE BY CHANGE         REF   DESCRIPTION
+/* ======= ============== ===== =============
+/* 4/15/17 Maxwell Reeser       Created the class
+/*
+/*
+/*
+/****************************************************************************************/
+
 package indiepantry.firstindiepantry;
 
 /**

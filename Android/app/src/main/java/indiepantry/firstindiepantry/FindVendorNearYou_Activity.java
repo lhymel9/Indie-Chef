@@ -1,4 +1,23 @@
+/****************************************************************************************/
+/*
+/* FILE NAME: FindVendorNearYou_Activity.java
+/*
+/* DESCRIPTION: Activity class for handling looking at the cart
+/*
+/* REFERENCE:
+/*
+/* DATE BY CHANGE            REF   DESCRIPTION
+/* ======= ================ ===== =============
+/* 4/23/17 Jacob Guglielmo        Created the class
+/* 4/26/17 Maxwell Reeser         Connected to rest of GUI
+/*
+/*
+/*
+/****************************************************************************************/
+
 package indiepantry.firstindiepantry;
+
+
 
 import android.content.Intent;
 import android.location.Location;
@@ -38,8 +57,6 @@ public class FindVendorNearYou_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_vendor_near_you);
         linearLayout = (LinearLayout) findViewById(R.id.vendorList);
-        TextView textView = (TextView) findViewById(R.id.FindVendorNearYouTextView);
-        textView.setText(myLocation.toString());
         createVendorsArrayList();
         createLocationsArrayList();
         if(vendors.size() == 0){
