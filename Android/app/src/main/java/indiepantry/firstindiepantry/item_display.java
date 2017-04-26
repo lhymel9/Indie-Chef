@@ -1,3 +1,19 @@
+/****************************************************************************************/
+/*
+/* FILE NAME: item_display.java
+/*
+/* DESCRIPTION: Class for managing data about items
+/*
+/* REFERENCE:
+/*
+/* DATE BY CHANGE         REF   DESCRIPTION
+/* ======= ============== ===== =============
+/* 4/13/17 Maxwell Reeser       Created the class
+/*
+/*
+/*
+/****************************************************************************************/
+
 package indiepantry.firstindiepantry;
 
 /**

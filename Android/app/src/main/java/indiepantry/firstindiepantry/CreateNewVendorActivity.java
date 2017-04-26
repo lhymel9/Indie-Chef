@@ -1,3 +1,20 @@
+/****************************************************************************************/
+/*
+/* FILE NAME: CreateNewVendorActivity.java
+/*
+/* DESCRIPTION: Activity class for handling creation of new vendor account
+/*
+/* REFERENCE:
+/*
+/* DATE BY CHANGE         REF   DESCRIPTION
+/* ======= ============== ===== =============
+/* 4/25/17 Maxwell Reeser       Created the class
+/*
+/*
+/*
+/*
+/****************************************************************************************/
+
 package indiepantry.firstindiepantry;
 
 import android.os.AsyncTask;

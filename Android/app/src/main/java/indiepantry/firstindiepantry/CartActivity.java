@@ -46,6 +46,7 @@ public class CartActivity extends AppCompatActivity {
         if (savedInstanceState != null)
             return;
 
+
         TextView placard = (TextView) findViewById(R.id.cartPagePlacard);
         placard.setText(SideData.getUsername() + "'s Cart");
 
