@@ -23,8 +23,10 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -125,6 +127,10 @@ public class HomeScreen extends AppCompatActivity implements  View.OnClickListen
         for(item_display bob: items){
             LinearLayout horizontalLayout = new LinearLayout(this);
             horizontalLayout.setOrientation(LinearLayout.HORIZONTAL);
+            LinearLayout verticalLayout = new LinearLayout(this);
+            verticalLayout.setOrientation(LinearLayout.VERTICAL);
+            int scale = Math.round(getApplicationContext().getResources().getDisplayMetrics().density);
+
             Button item_button = new Button(this);
             item_button.setTag(bob);
             item_button.setOnClickListener(new View.OnClickListener() {
@@ -153,10 +159,18 @@ public class HomeScreen extends AppCompatActivity implements  View.OnClickListen
                 }
             });
 
-            horizontalLayout.addView(item_button);
-            horizontalLayout.addView(vendor_button);
+            ImageView thumb = new ImageView(this);
+            thumb.setImageResource(R.drawable.ic_rbmq4ipuhk);
+
+            verticalLayout.addView(item_button);
+            verticalLayout.addView(vendor_button);
+            horizontalLayout.addView(thumb);
+            horizontalLayout.addView(verticalLayout);
 
             linearLayout.addView(horizontalLayout);
+
+            thumb.getLayoutParams().width = 80*scale;
+            thumb.getLayoutParams().height = 80*scale;
 
         }
     }
