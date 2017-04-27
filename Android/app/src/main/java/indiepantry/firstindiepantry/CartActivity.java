@@ -55,6 +55,7 @@ public class CartActivity extends AppCompatActivity {
         Log.i(TAG,"lvCartItemList assigned");
         CartItemListAdapter listAdapter = new CartItemListAdapter(this,alCartItems);
         Log.i(TAG,"listAdapter assigned"+listAdapter);
+        listAdapter.cart = this;
         lvCartItemList.setAdapter(listAdapter);
 
         recalculate();
@@ -62,12 +63,14 @@ public class CartActivity extends AppCompatActivity {
     }
 
     public void recalculate() {
+        subtotal = 0;
         for (item_display i : alCartItems) {
             subtotal += i.getCost();
         }
         ((TextView) findViewById(R.id.tv_subtotal)).setText(String.format("$%.2f",subtotal));
         ((TextView) findViewById(R.id.tv_tax)).setText(String.format("$%.2f",subtotal*taxRate));
         ((TextView) findViewById(R.id.tv_total)).setText(String.format("$%.2f",subtotal+(subtotal*taxRate)));
+        Log.i(TAG,"subtotal recalculated: "+subtotal);
     }
 
     /** Called when the user taps the Checkout button */

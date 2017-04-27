@@ -31,6 +31,9 @@ import java.util.ArrayList;
 
 public class CartItemListAdapter extends ArrayAdapter<item_display> {
 
+    double subtotal;
+    public CartActivity cart;
+
     public static final String TAG = CartItemListAdapter.class.getSimpleName();
     ArrayList<item_display> list;
 
@@ -79,7 +82,7 @@ public class CartItemListAdapter extends ArrayAdapter<item_display> {
             public void onClick(View v) {
                 list.remove(item);
                 notifyDataSetChanged();
-
+                cart.recalculate();
                 Toast.makeText(parent.getContext(),"Removed "+item.getName(), Toast.LENGTH_SHORT).show();
             }
         });

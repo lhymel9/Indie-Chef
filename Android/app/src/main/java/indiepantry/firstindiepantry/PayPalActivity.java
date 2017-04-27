@@ -28,6 +28,7 @@ import android.view.KeyEvent;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Toast;
 
 import static indiepantry.firstindiepantry.CartActivity.*;
 
@@ -69,11 +70,11 @@ public class PayPalActivity extends AppCompatActivity {
         builder.append("&item_name_1=");
         builder.append(itemName);
         builder.append("&amount_1=");
-        builder.append(orderTotal);
+        builder.append(String.format("%.2f",orderTotal));
         builder.append("&tax_cart=");
         builder.append(taxCart);
         checkoutURL = builder.toString();
-
+        Toast.makeText(getApplicationContext(),"Opening PayPal. Please wait...", Toast.LENGTH_SHORT).show();
         loadWebView();
     }
 
@@ -103,11 +104,13 @@ public class PayPalActivity extends AppCompatActivity {
                 if (uri.getHost().equals("www.paypal.com")) {
                     if (uri.getPath().equals("/webapps/success")) {
                         Log.i(TAG,"ORDER SUCCESS");
+                        Toast.makeText(getApplicationContext(),"Order Successful", Toast.LENGTH_LONG).show();
                         finish();
                         return true;
                     } else
                     if (uri.getPath().equals("/webapps/cancelled")) {
                         Log.i(TAG,"ORDER CANCELLED");
+                        Toast.makeText(getApplicationContext(),"Order Cancelled", Toast.LENGTH_SHORT).show();
                         finish();
                         return true;
                     }
@@ -132,6 +135,7 @@ public class PayPalActivity extends AppCompatActivity {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if ((keyCode == KeyEvent.KEYCODE_BACK) && !checkoutWebView.canGoBack()) {
             Log.i(TAG,"ORDER CANCELLED");
+            Toast.makeText(getApplicationContext(),"Order Cancelled", Toast.LENGTH_SHORT).show();
         }
         return super.onKeyDown(keyCode, event);
     }
