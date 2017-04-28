@@ -59,37 +59,12 @@ public class HomeScreen extends AppCompatActivity implements  View.OnClickListen
             }
         });
 
-
-
-    }
-
-    @Override
-    public void onClick(View v_button) {
-        Button button = (Button) v_button;
-        item_display bob = (item_display) button.getTag();
-        Intent intent = new Intent(this, Item_Activity.class);
-        SideData.setTemp_item(bob);
-        startActivity(intent);
-    }
-
-
-    @Override
-    protected void onStart(){
-        super.onStart();
-
-        Button cart_button = (Button) findViewById(R.id.cartButton);
-        cart_button.setText("Cart(" + SideData.getCartSize() + " items)");
-        cart_button.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HomeScreen.this, CartActivity.class);
-                startActivity(intent);
-            }
-        });
-
         Vendor vendor1 = new Vendor("Bob Smith", "House Place", "bob@smith.com");
         Vendor vendor2 = new Vendor("Kate Winslett", "Non-Home place", "kate@winslett.com");
         Vendor vendor3 = new Vendor("George Clooney", "Place","george@clooney.com");
+        vendor1.setRating("2.75");
+        vendor2.setRating("3.5");
+        vendor3.setRating("4.5");
 
         Item_Category cat1 = new Item_Category("Jellies", vendor1);
         Item_Category cat2 = new Item_Category("Cookies", vendor2);
@@ -101,24 +76,7 @@ public class HomeScreen extends AppCompatActivity implements  View.OnClickListen
         items.add(new item_display("Red Pepper Jelly",12.45, "A jelly made from red pepper", cat1));
         items.add(new item_display("Cookie Platter", 8.95, "A platter of assorted cookies",cat2));
         items.add(new item_display("Sourdough Loaf", 4.99,"A loaf of plain sourdough bread, baked fresh", cat3));
-        items.add(new item_display("Red Pepper Jelly",12.45, "A jelly made from red pepper", cat1));
-        items.add(new item_display("Cookie Platter", 8.95, "A platter of assorted cookies",cat2));
-        items.add(new item_display("Sourdough Loaf", 4.99,"A loaf of plain sourdough bread, baked fresh", cat3));
-        items.add(new item_display("Red Pepper Jelly",12.45, "A jelly made from red pepper", cat1));
-        items.add(new item_display("Cookie Platter", 8.95, "A platter of assorted cookies",cat2));
-        items.add(new item_display("Sourdough Loaf", 4.99,"A loaf of plain sourdough bread, baked fresh", cat3));
-        items.add(new item_display("Red Pepper Jelly",12.45, "A jelly made from red pepper", cat1));
-        items.add(new item_display("Cookie Platter", 8.95, "A platter of assorted cookies",cat2));
-        items.add(new item_display("Sourdough Loaf", 4.99,"A loaf of plain sourdough bread, baked fresh", cat3));
-        items.add(new item_display("Red Pepper Jelly",12.45, "A jelly made from red pepper", cat1));
-        items.add(new item_display("Cookie Platter", 8.95, "A platter of assorted cookies",cat2));
-        items.add(new item_display("Sourdough Loaf", 4.99,"A loaf of plain sourdough bread, baked fresh", cat3));
-        items.add(new item_display("Red Pepper Jelly",12.45, "A jelly made from red pepper", cat1));
-        items.add(new item_display("Cookie Platter", 8.95, "A platter of assorted cookies",cat2));
-        items.add(new item_display("Sourdough Loaf", 4.99,"A loaf of plain sourdough bread, baked fresh", cat3));
-        items.add(new item_display("Red Pepper Jelly",12.45, "A jelly made from red pepper", cat1));
-        items.add(new item_display("Cookie Platter", 8.95, "A platter of assorted cookies",cat2));
-        items.add(new item_display("Sourdough Loaf", 4.99,"A loaf of plain sourdough bread, baked fresh", cat3));
+
 
 
 
@@ -160,8 +118,15 @@ public class HomeScreen extends AppCompatActivity implements  View.OnClickListen
             });
 
             ImageView thumb = new ImageView(this);
-            thumb.setImageResource(R.drawable.ic_rbmq4ipuhk);
-
+            if(bob.getName().toLowerCase().contains("cookie")){
+                thumb.setImageResource(R.mipmap.cookie);
+            }
+            else if(bob.getName().toLowerCase().contains("sourdough")){
+                thumb.setImageResource(R.mipmap.bread);
+            }
+            else{
+                thumb.setImageResource(R.drawable.ic_rbmq4ipuhk);
+            }
             verticalLayout.addView(item_button);
             verticalLayout.addView(vendor_button);
             horizontalLayout.addView(thumb);
@@ -173,6 +138,34 @@ public class HomeScreen extends AppCompatActivity implements  View.OnClickListen
             thumb.getLayoutParams().height = 80*scale;
 
         }
+
+    }
+
+    @Override
+    public void onClick(View v_button) {
+        Button button = (Button) v_button;
+        item_display bob = (item_display) button.getTag();
+        Intent intent = new Intent(this, Item_Activity.class);
+        SideData.setTemp_item(bob);
+        startActivity(intent);
+    }
+
+
+    @Override
+    protected void onStart(){
+        super.onStart();
+
+        Button cart_button = (Button) findViewById(R.id.cartButton);
+        cart_button.setText("Cart(" + SideData.getCartSize() + " items)");
+        cart_button.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeScreen.this, CartActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
     }
 
 }

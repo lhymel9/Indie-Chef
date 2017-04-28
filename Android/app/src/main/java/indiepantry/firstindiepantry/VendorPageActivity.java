@@ -33,14 +33,17 @@ public class VendorPageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vendor_page);
-
+        Vendor vendor = SideData.getTemp_vendor();
+        ImageView thing = (ImageView) findViewById(R.id.vendorPageProfilePicture);
+        thing.setImageResource(R.mipmap.grafiti_pic);
         TextView nameBox =  (TextView) findViewById(R.id.vendorPageNameBox);
         TextView descriptionBox = (TextView) findViewById(R.id.vendorPageDescriptionBox);
         Button ratingButton = (Button) findViewById(R.id.vendorPageRatingsButton);
+        ratingButton.setText("Rating: " + vendor.getRating());
         Button menuButton = (Button) findViewById(R.id.vendorPageMenuButton);
         ImageView profilePic = (ImageView) findViewById(R.id.vendorPageProfilePicture);
+        menuButton.setText(vendor.getName() + "'s Menu");
 
-        Vendor vendor = SideData.getTemp_vendor();
         nameBox.setText(vendor.getName());
 
 
